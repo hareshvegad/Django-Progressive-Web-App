@@ -1,0 +1,19 @@
+{
+    "name": "PWA",
+    "short_name": "PWA",
+    "description": "PWA Web App",
+    "dir": "auto",
+    "lang": "en-US",
+    "display": "standalone",
+    "orientation": "any",
+    "start_url": "/",
+    "background_color": "#fffcfc",
+    "theme_color": "#ffaa00",
+    "icons": [
+        {
+        "src": "/static/assets/img/PWA_Logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+        }
+    ]
+}

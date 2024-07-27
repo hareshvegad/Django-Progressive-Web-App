@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="bg-indigo-700 text-white w-64 p-4">
+        <h2 class="text-2xl font-semibold mb-6">Dashboard</h2>
+        <nav class="space-y-2">
+            <a href="#" onclick="showPwaDetails()" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-800">Overview</a>
+            <a href="#" onclick="showDailyActivity()" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-800">Activity</a>
+            <a href="#" onclick="showSettings()" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-800">Settings</a>
+            <a href="#" onclick="showProfile()" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-800">Profile</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <!-- Top Navbar -->
+        <div class="bg-white shadow-md p-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
+            </div>
+            <div class="flex items-center">
+                <input type="text" placeholder="Search..." class="p-2 rounded border border-gray-300">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded ml-2">Search</button>
+                <form action="{% url 'login_page' %}" method="get" class="ml-4">
+                    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="p-4 flex-1">
+            <!-- Progressive Web App (PWA) Details -->
+            <div id="pwaDetails" class="hidden">
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Progressive Web App (PWA) Details</h2>
+                    <p class="text-gray-600 mb-2">A Progressive Web App (PWA) is a type of application software delivered through the web, built using common web technologies including HTML, CSS, and JavaScript.</p>
+                    <ul class="text-gray-600">
+                        <li><strong>Performance:</strong> PWAs are fast and provide a reliable user experience, leveraging service workers for caching and offline access.</li>
+                        <li><strong>Offline Support:</strong> They can work offline or with a poor internet connection, enabling seamless user interaction.</li>
+                        <li><strong>Engaging:</strong> PWAs can be added to the user's home screen, send push notifications, and offer an app-like experience.</li>
+                        <li><strong>Cross-platform:</strong> They are compatible across different devices and operating systems.</li>
+                    </ul>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">PWA Examples</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Example 1</h3>
+                            <p class="text-gray-600">Description of the first PWA example.</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Example 2</h3>
+                            <p class="text-gray-600">Description of the second PWA example.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Activity Details -->
+            <div id="dailyActivity" class="hidden">
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Daily Activity for Human Details</h2>
+                    <p class="text-gray-600 mb-2">This section provides detailed insights into daily activities and performance metrics relevant to human health and productivity.</p>
+                    <ul class="text-gray-600">
+                        <li><strong>Activity Logs:</strong> Track daily steps, workouts, and physical activities.</li>
+                        <li><strong>Health Insights:</strong> Monitor heart rate, sleep patterns, and overall wellness.</li>
+                        <li><strong>Productivity Metrics:</strong> Evaluate daily tasks completed, time management, and goal achievements.</li>
+                    </ul>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Activity Trends</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Week 1</h3>
+                            <p class="text-gray-600">Summary of activity trends for week 1.</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Week 2</h3>
+                            <p class="text-gray-600">Summary of activity trends for week 2.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Details -->
+            <div id="settings" class="hidden">
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Settings for Telwin Details</h2>
+                    <p class="text-gray-600 mb-2">Customize your account settings and preferences to optimize your experience with Telwin.</p>
+                    <ul class="text-gray-600">
+                        <li><strong>Account Preferences:</strong> Update personal information, notification settings, and language preferences.</li>
+                        <li><strong>Security Settings:</strong> Manage password, two-factor authentication, and security measures.</li>
+                        <li><strong>Privacy Settings:</strong> Control data sharing, visibility of profile information, and communication preferences.</li>
+                    </ul>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Integration Settings</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">API Integration</h3>
+                            <p class="text-gray-600">Details about integrating with external APIs.</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Third-party Services</h3>
+                            <p class="text-gray-600">Settings for third-party service integrations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Details -->
+            <div id="profile" class="hidden">
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Profile</h2>
+                    <p class="text-gray-600 mb-2">View and manage your profile details.</p>
+                    <ul class="text-gray-600">
+                        <li><strong>Name:</strong> John Doe</li>
+                        <li><strong>Email:</strong> john.doe@example.com</li>
+                        <li><strong>Bio:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><strong>Interests:</strong> Technology, fitness, reading</li>
+                    </ul>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Recent Activity</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Last Login</h3>
+                            <p class="text-gray-600">Details about your last login.</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Profile Updates</h3>
+                            <p class="text-gray-600">Summary of recent profile updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPwaDetails() {
+        document.getElementById('pwaDetails').style.display = 'block';
+        document.getElementById('dailyActivity').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+    }
+
+    function showDailyActivity() {
+        document.getElementById('pwaDetails').style.display = 'none';
+        document.getElementById('dailyActivity').style.display = 'block';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+    }
+
+    function showSettings() {
+        document.getElementById('pwaDetails').style.display = 'none';
+        document.getElementById('dailyActivity').style.display = 'none';
+        document.getElementById('settings').style.display = 'block';
+        document.getElementById('profile').style.display = 'none';
+    }
+
+    function showProfile() {
+        document.getElementById('pwaDetails').style.display = 'none';
+        document.getElementById('dailyActivity').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('profile').style.display = 'block';
+    }
+</script>
+
+{% endblock %}
